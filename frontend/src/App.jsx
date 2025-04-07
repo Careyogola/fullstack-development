@@ -1,10 +1,11 @@
-import { Button } from '@chakra-ui/react';
+
 import React from 'react';
+import './index.css'
 
 function App() {
   return (
-    <div>
-      <p>Hello</p>
+    <div className=' dark:bg-gray-900 w-full h-screen p-7'>
+      <p className='text-3xl text-white'>Hello !</p>
     </div>
   )
 }
