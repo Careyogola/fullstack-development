@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { type } from "os";
 
-const productSchema = new mongoose.schema({
+const productSchema = new mongoose.Schema({
     name:{
         type: String,
         required: true,
@@ -14,7 +14,9 @@ const productSchema = new mongoose.schema({
         type: String,
         required: true
     },
-   timestamps: true,
+},
+{
+    timestamps: true,
 });
 
 const Product = mongoose.model('Product', productSchema);
