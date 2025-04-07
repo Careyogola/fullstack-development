@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import connectDB from './config/db.js';
-// import Product from './models/product.model.js';
-// import mongoose from 'mongoose';
+import Product from './models/product.model.js';
+import mongoose from 'mongoose';
 import productRoutes from './routes/routes.js'
 
 dotenv.config();
