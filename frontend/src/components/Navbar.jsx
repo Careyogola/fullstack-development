@@ -6,7 +6,7 @@ const Navbar = () => {
   // const { theme, setTheme } = useTheme();
 
   return (
-    <div className='bg-inherit w-full mb-10 shadow-sm p-7'>
+    <div className='bg-inherit w-full shadow-sm p-7'>
       <div className='flex flex-row justify-between'>
       <div className='flex flex-row gap-4 justify-evenly items-center text-black'>
         <a href='/' className='text-2xl font-bold'>Created<span className='text-teal-900'>Store!</span></a>
