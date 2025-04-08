@@ -1,12 +1,15 @@
 import { useProductStore } from '../store/product.js';
 import React, { useState } from 'react';
 
+
+
 const Createpage = () => {
   const [newProduct, setNewProduct] = useState({
     name: '',
     price: '',
     image: '',
   });
+
 
   // const handleChange = (e) => {
   //   setNewProduct({ 

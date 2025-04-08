@@ -1,7 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router'
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const Middlesection = () => {
+
+  const notify = () => toast.success('Accunt created successfully.', {
+    position: "bottom-right",
+    autoClose: 4000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    // transition: Slide,
+    });
+    
 
   
   return (
@@ -13,6 +28,22 @@ const Middlesection = () => {
         <div className='flex flex-row justify-between gap-10 items-center'>
             <Link to='/create'><button className='px-10 py-3 border-none bg-teal-400 rounded hover:cursor-pointer'>Add Products</button></Link>
             <Link to='/products'><button className='px-10 py-3 border-none bg-teal-400 rounded hover:cursor-pointer'>Available Products</button></Link>
+            <div>
+            <button onClick={notify} className='px-10 py-3 border-none bg-teal-400 rounded hover:cursor-pointer'>Available Products</button>
+            <ToastContainer
+              position="bottom-right"
+              autoClose={4000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+              // transition={Slide}
+            />
+            </div>
         </div>
     </div>
   )
