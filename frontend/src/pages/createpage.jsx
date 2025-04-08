@@ -1,27 +1,36 @@
+import { useProductStore } from '../store/product.js';
 import React, { useState } from 'react';
 
 const Createpage = () => {
-  const [formData, setFormData] = useState({
-    Name: '',
-    Price: '',
-    Image: '',
+  const [newProduct, setNewProduct] = useState({
+    name: '',
+    price: '',
+    image: '',
   });
 
-  const handleChange = (e) => {
-    setFormData({ 
-      ...formData, 
-      [e.target.name]: e.target.value 
-    });
-  };
+  // const handleChange = (e) => {
+  //   setNewProduct({ 
+  //     ...newProduct, 
+  //     [e.target.name]: e.target.value 
+  //   });
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add your API or Firestore logic here
+    console.log('product:', newProduct);
   };
 
+  const { createProducts } = useProductStore();
+  const handleProduct = async () =>{
+    const { success, message } = await createProducts(newProduct);
+    console.log('success:', success);
+    console.log('message:', message);
+
+    // console.log(newProduct)
+  }
+
   return (
-    <div className='flex flex-col items-center justify-center p-7 h-screen'>
+    <div className='flex bg-linear-to-t from-teal-200 via-teal-800 to-teal-50 w-full items-center justify-center p-7 h-screen'>
       <div className='border-none shadow rounded p-6'>
         <p className='text-4xl mb-5 font-bold bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text'>
           Create Products
@@ -33,8 +42,13 @@ const Createpage = () => {
             id='Name'
             name='Name'
             type='text'
-            value={formData.Name}
-            onChange={handleChange}
+            value={newProduct.name}
+            onChange={(e)=>{
+              setNewProduct({
+                ...newProduct,
+                name: e.target.value
+              })
+            }}
             className='w-96 h-12 px-3 py-3 bg-teal-50'
             placeholder='Enter Product Name'
           />
@@ -44,8 +58,13 @@ const Createpage = () => {
             id='Price'
             name='Price'
             type='number'
-            value={formData.Price}
-            onChange={handleChange}
+            value={newProduct.price}
+            onChange={(e)=>{
+              setNewProduct({
+                ...newProduct,
+                price: e.target.value
+              })
+            }}
             className='w-96 h-12 px-3 py-3 bg-teal-50'
             placeholder='Product Price'
           />
@@ -55,14 +74,19 @@ const Createpage = () => {
             id='Image'
             name='Image'
             type='text'
-            value={formData.Image}
-            onChange={handleChange}
+            value={newProduct.image}
+            onChange={(e)=>{
+              setNewProduct({
+                ...newProduct,
+                image: e.target.value
+              })
+            }}
             className='w-96 h-12 px-3 py-3 bg-teal-50'
             placeholder='Product Image URL'
           />
 
-          <button type='submit' className='px-10 py-3 border-none bg-teal-400 rounded hover:cursor-pointer'>
-            Create product
+          <button onClick={handleProduct} className='px-10 py-3 border-none bg-teal-400 rounded hover:cursor-pointer'>
+            Add product
           </button>
         </form>
       </div>
