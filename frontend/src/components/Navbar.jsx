@@ -18,9 +18,7 @@ const Navbar = () => {
         <a href='/updated' className="group text-black transition duration-300">UpdatedProducts
         <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
         </a>
-        <a href="#" className="group text-black transition duration-300">Link
-        <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
-        </a>
+        
 
       </div>
 
