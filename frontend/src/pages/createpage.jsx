@@ -1,7 +1,6 @@
 import { useProductStore } from '../store/product.js';
 import React, { useState } from 'react';
-
-
+import { ToastContainer, toast } from 'react-toastify';
 
 const Createpage = () => {
   const [newProduct, setNewProduct] = useState({
@@ -10,6 +9,28 @@ const Createpage = () => {
     image: '',
   });
 
+  const notify = () => toast.success('Product created successfully.', {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      // transition: Slide,
+      });
+
+  const notified = () => toast.success('Product creation failed!.', {
+    position: "top-right",
+    autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+  })
 
   // const handleChange = (e) => {
   //   setNewProduct({ 
@@ -24,12 +45,17 @@ const Createpage = () => {
   };
 
   const { createProducts } = useProductStore();
-  const handleProduct = async () =>{
-    const { success, message } = await createProducts(newProduct);
-    console.log('success:', success);
-    console.log('message:', message);
 
+  const handleProduct = async () =>{
+    const { success } = await createProducts(newProduct);
+    // console.log('success:', success);
+    // console.log('message:', message);
     // console.log(newProduct)
+    if(success){
+      notify();
+    } else {
+      notified();
+    }
   }
 
   return (
@@ -88,9 +114,23 @@ const Createpage = () => {
             placeholder='Product Image URL'
           />
 
+        
           <button onClick={handleProduct} className='px-10 py-3 border-none bg-teal-400 rounded hover:cursor-pointer'>
             Add product
           </button>
+          <ToastContainer
+                        position="bottom-right"
+                        autoClose={4000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick={false}
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="dark"
+                        // transition={Slide}
+                      />
         </form>
       </div>
     </div>
