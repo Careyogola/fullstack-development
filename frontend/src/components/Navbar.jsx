@@ -1,6 +1,10 @@
-import React from 'react'
+// import { useTheme } from 'next-themes'
+import { MdOutlineDarkMode, MdDarkMode  } from "react-icons/md";
 
 const Navbar = () => {
+
+  // const { theme, setTheme } = useTheme();
+
   return (
     <div className='bg-inherit w-full mb-10 shadow-sm p-7'>
       <div className='flex flex-row justify-between'>
@@ -32,6 +36,15 @@ const Navbar = () => {
         <a href='/contact'className="group text-black transition duration-300">Contact Sales
         <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
         </a>
+        {/* <button 
+        className='hover:cursor-pointer'
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        >
+        {
+        theme === "dark" ? <MdOutlineDarkMode size={20}/> : <MdDarkMode size={20}/>
+        }
+        </button> */}
+        <MdDarkMode size={20}/>
       </div>
       </div>
     </div>
