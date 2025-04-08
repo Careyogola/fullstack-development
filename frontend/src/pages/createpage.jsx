@@ -59,7 +59,7 @@ const Createpage = () => {
   }
 
   return (
-    <div className='flex bg-linear-to-t from-teal-200 via-teal-800 to-teal-50 w-full items-center justify-center p-7 h-screen'>
+    <div className='flex bg-linear-to-t from-teal-400 via-teal-800 to-teal-500 w-full items-center justify-center p-7 h-screen'>
       <div className='border-none shadow rounded p-6'>
         <p className='text-4xl mb-5 font-bold bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text'>
           Create Products

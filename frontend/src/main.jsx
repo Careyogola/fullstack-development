@@ -4,6 +4,7 @@ import App from './App.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Createpage from './pages/createpage.jsx'
 import Productspage from './pages/productspage.jsx'
+import Signuppage from './pages/signuppage.jsx'
 // import { ThemeProvider } from 'next-themes'
 
 
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='/' element={<App/>} />
           <Route path='/create' element={<Createpage />}/>
           <Route path='/products' element={<Productspage />} />
+          <Route path='/signup' element={<Signuppage />} />
         </Routes>
     </BrowserRouter>
     {/* </ThemeProvider> */}
