@@ -48,9 +48,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: '',
     }
-
-
-
     //timestamps helps show when the user created
 },{timestamps: true})
 

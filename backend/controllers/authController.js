@@ -1,9 +1,10 @@
 import User from '../models/userModel.js'
 import bcrypt from 'bcryptjs'
+import { generateTokenAndSetCookie } from '../lib/utils/generatetoken.js'
 
 export const signup = async (req, res)=>{
     try {
-        const { fullname, email, password } = req.body;
+        const { username, email, password } = req.body;
 
 
         const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -13,7 +14,7 @@ export const signup = async (req, res)=>{
             })
         }
 
-        const existingUser = await User.findOne({ fullname });
+        const existingUser = await User.findOne({ username });
         if(existingUser) {
             return res.status(400).json({ error: "Username is already taken." })
         }
@@ -29,8 +30,8 @@ export const signup = async (req, res)=>{
         const hashedPassword = await bcrypt.hash(password, salt);
 
         const newUser = new User({
-            fullname,
-            email,
+            username: username,
+            email: email,
             password: hashedPassword,
         })
 
@@ -40,13 +41,22 @@ export const signup = async (req, res)=>{
 
             res.status(201).json({
                 _id: newUser._id,
-                FullName: newUser.fullname,
-                
+                username: newUser.username,
+                email: newUser.email,
+                profileImage: newUser.profileImage,
+                coverImage: newUser.coverImage,
+                followers: newUser.followers,
+                following: newUser.following,
             })
         } else {
-
+            res.status(400).json({
+                error: "Invalid user data."
+            })
         }
     } catch (error) {
+        res.status(500).json({
+            error: "Internal server error."
+        })
         
     }
 }
