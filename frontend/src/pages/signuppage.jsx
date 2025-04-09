@@ -42,7 +42,7 @@ const Signuppage = () => {
                 onChange={(e)=>{
                     setFormData({
                         ...formData,
-                        name: e.target.value
+                        email: e.target.value
                     })
                 }}
                 className='bg-amber-50 py-2 rounded px-2 items-center'
@@ -51,12 +51,12 @@ const Signuppage = () => {
                 <input 
                 type='password'
                 placeholder='********'
-                name='passwword'
+                name='password'
                 value={formData.password}
                 onChange={(e)=>{
                     setFormData({
                         ...formData,
-                        name: e.target.value
+                        password: e.target.value
                     })
                 }}
                 className='bg-amber-50 py-2 rounded px-2 items-center'
