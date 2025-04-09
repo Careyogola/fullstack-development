@@ -25,6 +25,7 @@ const Loginpage = () => {
                 placeholder='Enter your email address'
                 name='email'
                 value={formData.email}
+                required
                 onChange={(e)=>{
                     setFormData({
                         ...formData,
@@ -40,6 +41,7 @@ const Loginpage = () => {
                 name='password'
                 maxLength={15}
                 value={formData.password}
+                required
                 onChange={(e)=>{
                     setFormData({
                         ...formData,
