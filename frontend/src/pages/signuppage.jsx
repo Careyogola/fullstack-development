@@ -17,7 +17,7 @@ const Signuppage = () => {
   return (
     <div className='w-full flex bg-linear-to-t from-teal-300 via-teal-600 to-teal-500 items-center justify-center p-7 h-screen'>
         <div className='border-none rounded shadow-2xl  p-6 flex flex-col'>
-            <h4 className='text-3xl font-medium mb-5'>Register account here</h4>
+            <h4 className='text-3xl font-bold underline text-center text-teal-50 mb-5'>Register account here</h4>
             <form  onSubmit={handleSubmit} className='flex flex-col gap-4 w-[400px]'>
                 <label htmlFor='name'>Full Name</label>
                 <input 
@@ -66,7 +66,7 @@ const Signuppage = () => {
                 className='bg-amber-50 py-2 rounded px-2 items-center'
                 />
 
-                <button className='px-10 py-3 border-none bg-teal-400 rounded hover:cursor-pointer'>
+                <button className='px-10 py-3 border-none hover:bg-teal-400 bg-teal-950  text-teal-50 rounded hover:cursor-pointer'>
                 Create account
                 </button>
             </form>
