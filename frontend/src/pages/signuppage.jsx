@@ -25,6 +25,7 @@ const Signuppage = () => {
                 placeholder='Enter your name'
                 name='name'
                 value={formData.name}
+                required
                 onChange={(e)=>{
                     setFormData({
                         ...formData,
@@ -39,6 +40,7 @@ const Signuppage = () => {
                 placeholder='Enter your email address'
                 name='email'
                 value={formData.email}
+                required
                 onChange={(e)=>{
                     setFormData({
                         ...formData,
@@ -54,6 +56,7 @@ const Signuppage = () => {
                 maxLength={15}
                 name='password'
                 value={formData.password}
+                required
                 onChange={(e)=>{
                     setFormData({
                         ...formData,
