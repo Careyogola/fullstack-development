@@ -38,6 +38,7 @@ const Loginpage = () => {
                 type='password'
                 placeholder='********'
                 name='password'
+                maxLength={15}
                 value={formData.password}
                 onChange={(e)=>{
                     setFormData({

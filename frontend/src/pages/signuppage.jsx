@@ -51,6 +51,7 @@ const Signuppage = () => {
                 <input 
                 type='password'
                 placeholder='********'
+                maxLength={15}
                 name='password'
                 value={formData.password}
                 onChange={(e)=>{
