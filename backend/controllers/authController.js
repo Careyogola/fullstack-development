@@ -64,26 +64,61 @@ export const signup = async (req, res)=>{
 }
 
 export const login = async (req, res) => {
-    res.json({
-        data: "Youve hit login endpoint."
-    })
+    try {
+        const { username, password } = req.body;
+        const user = await User.findOne({ username });
+        const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
+
+        if(!user || !isPasswordCorrect) {
+            return res.status(400).json({
+                error: "Invalid username or password."
+            })
+        }
+        await user.save();
+        generateTokenAndSetCookie(user._id, res);
+
+        res.status(200).json({
+            _id: user._id,
+            username: user.username,
+            email: user.email,
+            profileImage: user.profileImage,
+            coverImage: user.coverImage,
+            followers: user.followers,
+            following: user.following,
+        })
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            error: "Internal server error."
+        })
+        
+    }
 }
 
 export const logout = async (req, res) => {
-    res.json({
-        data: "Youve hit signout endpoint."
-    })
+    try {
+        res.cookie('jwt','', {maxAge: 0});
+        res.status(200).json({
+            message: "Logout successfully."
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            error: "Internal server error."
+        })
+    }
 }
 
 
 export const getUsers = async (req, res) => {
     try {
-        const users = await User.find({});
-        res.status(200).json({
-            success: true,
-            data: users,
-        })
+        const users = await User.findById(req.user._id).select("-password");
+        res.status(200).json({ users})
     } catch (error) {
-        
+        console.error(error);
+        res.status(500).json({
+            error: "Internal server error."
+        })
     }
 }
