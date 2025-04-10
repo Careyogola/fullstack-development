@@ -12,7 +12,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/products', productRoutes);
 app.use('/api/auth', authRoutes)
 
-// console.log(process.env.MONGO_URL);
 const port = process.env.PORT || 4001;
 
 app.listen(port, ()=>{
