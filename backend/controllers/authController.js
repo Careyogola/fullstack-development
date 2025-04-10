@@ -6,7 +6,6 @@ export const signup = async (req, res)=>{
     try {
         const { username, email, password } = req.body;
 
-
         const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
         if(!emailRegex.test(email)) {
             return res.status(400).json({
@@ -56,6 +55,7 @@ export const signup = async (req, res)=>{
             })
         }
     } catch (error) {
+        console.error(error);
         res.status(500).json({
             error: "Internal server error."
         })
