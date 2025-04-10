@@ -44,7 +44,6 @@ export const signup = async (req, res)=>{
                 _id: newUser._id,
                 username: newUser.username,
                 email: newUser.email,
-                password: newUser.hashedPassword,
                 profileImage: newUser.profileImage,
                 coverImage: newUser.coverImage,
                 followers: newUser.followers,
