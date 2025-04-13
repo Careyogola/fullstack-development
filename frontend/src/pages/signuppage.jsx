@@ -79,6 +79,7 @@ const Signuppage = () => {
           </form>
         </div>
         <p className="text-gray-800 text-center mt-3">
+          <span className="loading loading-spinner loading-sm"></span>
           Already have an account ? <Link to="/login">Login</Link>
         </p>
       </div>
