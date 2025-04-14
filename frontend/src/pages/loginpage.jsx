@@ -14,13 +14,13 @@ const Loginpage = () => {
   };
 
   return (
-    <div className='w-full flex bg-linear-to-t from-teal-300 via-teal-600 to-teal-500 items-center justify-center p-7 h-screen'>
+    <div className='w-full flex items-center justify-center p-7 h-screen'>
         <div className='border-none rounded shadow-2xl  p-6 flex flex-col'>
-            <h4 className='text-3xl font-bold text-center underline mb-5'>Login Here</h4>
+            <h4 className='text-3xl font-bold text-center  mb-5'>Login Here</h4>
             <form  onSubmit={handleSubmit} className='flex flex-col gap-4 w-[400px]'>
-                
+
                 <label htmlFor='name'>Email</label>
-                <input 
+                <input
                 type='email'
                 placeholder='Enter your email address'
                 name='email'
@@ -35,7 +35,7 @@ const Loginpage = () => {
                 className='bg-amber-50 py-2 rounded px-2 items-center'
                 />
                 <label htmlFor='name'>Password</label>
-                <input 
+                <input
                 type='password'
                 placeholder='********'
                 name='password'
@@ -57,8 +57,8 @@ const Loginpage = () => {
           </form>
           <p className="text-white text-center font-normal mt-5">
             Don't have account yet?
-            <span className="">
-              <Link to="/signup">signup here</Link>
+            <span className="text-violet-200">
+              <Link to="/signup">  Create account.</Link>
             </span>
           </p>
         </div>

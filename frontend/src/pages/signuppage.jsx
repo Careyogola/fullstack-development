@@ -15,16 +15,10 @@ const Signuppage = () => {
   };
 
   return (
-    <div className="w-full flex bg-linear-to-t from-teal-300 via-teal-600 to-teal-500 items-center justify-center p-7 h-screen">
-      <div className="flex flex-col">
-        <h4 className="text-3xl font-bold text-center text-teal-50 mb-5">
-          Register account here
-        </h4>
-    <div className='w-full flex  items-center justify-center p-7 h-screen'>
+    <div className="w-full flex  items-center justify-center p-7 h-screen">
+
         <div className='border-none rounded shadow-2xl  p-6 flex flex-col'>
             <h4 className='text-3xl font-bold  text-center text-black mb-5'>Register account here</h4>
-
-        <div className="border-none rounded shadow-2xl  p-6 flex flex-col">
           <form
             onSubmit={handleSubmit}
             className="flex flex-col gap-4 w-[400px]"
@@ -82,7 +76,7 @@ const Signuppage = () => {
           </form>
         </div>
         </div>
-        </div>
-        </div>
-        </div>
+
   )}
+
+  export default Signuppage;
