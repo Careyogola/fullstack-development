@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router";
+import Loader from "../components/Loader";
 
 const Loginpage = () => {
   const [formData, setFormData] = useState({
@@ -8,11 +9,19 @@ const Loginpage = () => {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("user:", formData);
   };
 
+  const handleClick = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+  }
   return (
     <div className='w-full flex items-center justify-center p-7 h-screen'>
         <div className='border-none rounded shadow-2xl  p-6 flex flex-col'>
@@ -51,8 +60,14 @@ const Loginpage = () => {
                 className='py-2 rounded px-2 items-center'
                 />
 
-            <button className="px-10 py-3 border-none bg-teal-950 text-teal-50 hover:bg-teal-400 rounded hover:cursor-pointer">
-              Log in
+            <button
+            className="px-10 py-3 border-none bg-teal-950 text-teal-50 hover:bg-teal-400 rounded hover:cursor-pointer"
+            onClick={handleClick}
+            >
+              {loading ? (
+                <Loader />
+              ) : "Login"}
+
             </button>
           </form>
           <p className="text-center font-normal mt-5">
