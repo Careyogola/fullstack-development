@@ -43,6 +43,7 @@ const Loginpage = () => {
                 }}
                 className='py-2 rounded px-2 items-center'
                 />
+
                 <label htmlFor='name'>Password</label>
                 <input
                 type='password'
@@ -73,7 +74,7 @@ const Loginpage = () => {
           <p className="text-center font-normal mt-5">
             Don't have account yet?
             <span className="text-violet-200">
-              <Link to="/signup">  Create account.</Link>
+              <Link to="/signups">  Create account.</Link>
             </span>
           </p>
         </div>

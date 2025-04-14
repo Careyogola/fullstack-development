@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router";
 import Loader from "../components/Loader";
+import { useMutation } from "@tanstack/react-query";
 
 const Signuppage = () => {
   const [formData, setFormData] = useState({
@@ -10,18 +11,50 @@ const Signuppage = () => {
     password: "",
   });
 
+  const { mutate } = useMutation({
+    mutationFn: async ({email, name ,password}) => {
+      try {
+        const res = await fetch("/api/auth/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            username: name,
+            password,
+          }),
+        });
+
+          if(!res.ok) {
+            throw new Error("Network response was not ok");
+          }
+          const data = await res.json();
+          if(data.error) {
+            throw new Error(data.error);
+          }
+          return data;
+
+      } catch (error) {
+        console.error(error);
+      }
+
+    }
+  });
+
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("user:", formData);
+    // console.log("user:", formData);
+    mutate(formData.email, formData.name, formData.password);
   };
 
   const handleClick = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 3000);
 
   }
   return (
@@ -35,6 +68,7 @@ const Signuppage = () => {
             <label htmlFor="name">Full Name</label>
             <input
               type="text"
+              id="name"
               placeholder="Enter your name"
               name="name"
               value={formData.name}
@@ -47,9 +81,10 @@ const Signuppage = () => {
               }}
               className="py-2 rounded px-2 items-center"
             />
-            <label htmlFor="name">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
+              id="email"
               placeholder="Enter your email address"
               name="email"
               value={formData.email}
@@ -62,9 +97,10 @@ const Signuppage = () => {
               }}
               className="py-2 rounded px-2 items-center"
             />
-            <label htmlFor="name">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
+              id="password"
               placeholder="********"
               maxLength={15}
               name="password"

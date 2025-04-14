@@ -7,7 +7,7 @@ export const signup = async (req, res)=>{
         const { username, email, password } = req.body;
 
         const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-        if(!emailRegex.test(email)) {
+        if(emailRegex.test(email)) {
             return res.status(400).json({
                 error:"Invalid email format."
             })
@@ -36,7 +36,7 @@ export const signup = async (req, res)=>{
 
         if(newUser) {
             generateTokenAndSetCookie(newUser._id, res);
-            
+
             await newUser.save();
 
             res.status(201).json({
@@ -48,7 +48,7 @@ export const signup = async (req, res)=>{
                 followers: newUser.followers,
                 following: newUser.following,
             });
-            
+
         } else {
             res.status(400).json({
                 error: "Invalid user data."
@@ -59,7 +59,7 @@ export const signup = async (req, res)=>{
         res.status(500).json({
             error: "Internal server error."
         })
-        
+
     }
 }
 
@@ -92,7 +92,7 @@ export const login = async (req, res) => {
         res.status(500).json({
             error: "Internal server error."
         })
-        
+
     }
 }
 

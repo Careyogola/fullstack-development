@@ -30,7 +30,7 @@ const Navbar = () => {
         <a href='/login' className="group text-white transition duration-300">Log in
         <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
         </a>
-        <a href='/signup' className="group text-white transition duration-300">Create Account
+        <a href='/signups' className="group text-white transition duration-300">Create Account
         <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
         </a>
         <a href='/contact'className="group text-white transition duration-300">Contact Sales
