@@ -59,7 +59,7 @@ const Createpage = () => {
   }
 
   return (
-    <div className='flex bg-linear-to-t from-teal-400 via-teal-800 to-teal-500 w-full items-center justify-center p-7 h-screen'>
+    <div className='flex  w-full items-center justify-center p-7 h-screen'>
       <div className='border-none shadow rounded p-6'>
         <p className='text-4xl mb-5 font-bold bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text'>
           Create Products
@@ -72,6 +72,7 @@ const Createpage = () => {
             name='Name'
             type='text'
             value={newProduct.name}
+            required
             onChange={(e)=>{
               setNewProduct({
                 ...newProduct,
@@ -88,6 +89,7 @@ const Createpage = () => {
             name='Price'
             type='number'
             value={newProduct.price}
+            required
             onChange={(e)=>{
               setNewProduct({
                 ...newProduct,
@@ -104,6 +106,7 @@ const Createpage = () => {
             name='Image'
             type='text'
             value={newProduct.image}
+            required
             onChange={(e)=>{
               setNewProduct({
                 ...newProduct,
@@ -115,7 +118,7 @@ const Createpage = () => {
           />
 
         
-          <button onClick={handleProduct} className='px-10 py-3 border-none bg-teal-400 rounded hover:cursor-pointer'>
+          <button onClick={handleProduct} className='px-10 py-3 border-none bg-teal-900 text-white rounded hover:cursor-pointer'>
             Add product
           </button>
           <ToastContainer
