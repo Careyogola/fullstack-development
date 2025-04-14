@@ -3,6 +3,7 @@ import React from 'react'
 const Productspage = () => {
   return (
     <>
+
     <div className="carousel w-full">
       <div id="item1" className="carousel-item w-full">
         <img
