@@ -6,11 +6,10 @@ import Createpage from "./pages/createpage.jsx";
 import Productspage from "./pages/productspage.jsx";
 import Signuppage from "./pages/signuppage.jsx";
 import Loginpage from "./pages/loginpage.jsx";
-// import { ThemeProvider } from 'next-themes'
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    {/* <ThemeProvider attribute="class"> */}
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
@@ -20,6 +19,5 @@ createRoot(document.getElementById("root")).render(
         <Route path="/login" element={<Loginpage />} />
       </Routes>
     </BrowserRouter>
-    {/* </ThemeProvider> */}
   </StrictMode>
 );

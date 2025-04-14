@@ -16,9 +16,8 @@ const Signuppage = () => {
 
   return (
     <div className="w-full flex  items-center justify-center p-7 h-screen">
-
         <div className='border-none rounded shadow-2xl  p-6 flex flex-col'>
-            <h4 className='text-3xl font-bold  text-center text-black mb-5'>Register account here</h4>
+            <h4 className='text-3xl font-bold  text-center text-white mb-5'>Register account here</h4>
           <form
             onSubmit={handleSubmit}
             className="flex flex-col gap-4 w-[400px]"
@@ -36,7 +35,7 @@ const Signuppage = () => {
                   name: e.target.value,
                 });
               }}
-              className="bg-amber-50 py-2 rounded px-2 items-center"
+              className="py-2 rounded px-2 items-center"
             />
             <label htmlFor="name">Email</label>
             <input
@@ -51,7 +50,7 @@ const Signuppage = () => {
                   email: e.target.value,
                 });
               }}
-              className="bg-amber-50 py-2 rounded px-2 items-center"
+              className="py-2 rounded px-2 items-center"
             />
             <label htmlFor="name">Password</label>
             <input
@@ -67,7 +66,7 @@ const Signuppage = () => {
                   password: e.target.value,
                 });
               }}
-              className="bg-amber-50 py-2 rounded px-2 items-center"
+              className="py-2 rounded px-2 items-center"
             />
 
             <button className="px-10 py-3 border-none hover:bg-teal-400 bg-teal-950  text-teal-50 rounded hover:cursor-pointer">

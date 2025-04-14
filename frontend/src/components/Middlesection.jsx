@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const Middlesection = () => {
 
-  const notify = () => toast.success('Accunt created successfully.', {
+  const notify = () => toast.success('Account created successfully.', {
     position: "bottom-right",
     autoClose: 4000,
     hideProgressBar: false,
@@ -16,9 +16,9 @@ const Middlesection = () => {
     theme: "dark",
     // transition: Slide,
     });
-    
 
-  
+
+
   return (
     <div className='flex flex-col text-center justify-center items-center px-7 h-screen'>
         <p className='text-5xl font-bold mb-8'>Create. Update or Patch .<span className='bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text'>Delete.</span></p>
