@@ -3,6 +3,7 @@ import { MdOutlineDarkMode, MdDarkMode  } from "react-icons/md";
 import { VscAccount } from "react-icons/vsc";
 
 
+
 const Navbar = () => {
 
   // const { theme, setTheme } = useTheme();
@@ -45,7 +46,17 @@ const Navbar = () => {
         }
         </button> */}
         <MdDarkMode size={20} color="white"/>
-        <VscAccount size={20} color="white" />
+        
+        <VscAccount size={20} color="white" className="hover:cursor-pointer"/>
+
+        <div className="avatar">
+  <div className="w-24 rounded-full">
+    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+  </div>
+</div>
+
+        
+        
       </div>
       </div>
     </div>
