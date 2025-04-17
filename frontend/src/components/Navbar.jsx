@@ -1,5 +1,7 @@
 // import { useTheme } from 'next-themes'
 import { MdOutlineDarkMode, MdDarkMode  } from "react-icons/md";
+import { VscAccount } from "react-icons/vsc";
+
 
 const Navbar = () => {
 
@@ -11,16 +13,16 @@ const Navbar = () => {
       <div className='flex flex-row gap-4 justify-evenly items-center text-white'>
         <a href='/' className='text-2xl font-bold'>Created<span className='text-teal-400'>Store</span></a>
         <a href='/products' className="group text-white transition duration-300">Products
-        <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+        <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
         </a>
         <a href='/docs' className="group text-white transition duration-300">Docs
-        <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+        <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
         </a>
         <a href='/deleted' className="group text-white transition duration-300">DeletedProducts
-        <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+        <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
         </a>
         <a href='/updated' className="group text-white transition duration-300">UpdatedProducts
-        <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+        <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
         </a>
 
 
@@ -28,14 +30,12 @@ const Navbar = () => {
 
       <div className='flex flex-row justify-evenly items-center gap-4'>
         <a href='/login' className="group text-white transition duration-300">Log in
-        <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+        <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
         </a>
         <a href='/signups' className="group text-white transition duration-300">Create Account
-        <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+        <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
         </a>
-        <a href='/contact'className="group text-white transition duration-300">Contact Sales
-        <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
-        </a>
+        
         {/* <button
         className='hover:cursor-pointer'
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -45,6 +45,7 @@ const Navbar = () => {
         }
         </button> */}
         <MdDarkMode size={20} color="white"/>
+        <VscAccount size={20} color="white" />
       </div>
       </div>
     </div>
