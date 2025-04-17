@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router";
 import Loader from "../components/Loader";
-import { useMutation } from "@tanstack/react-query";
+// import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 const Signuppage = () => {
   const [formData, setFormData] = useState({
@@ -11,52 +12,88 @@ const Signuppage = () => {
     password: "",
   });
 
-  const { mutate } = useMutation({
-    mutationFn: async ({email, name ,password}) => {
+  const useSignup = (formData) => {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [data, setData] = useState(null);
+  
+    const signup = async () => {
+      setLoading(true);
       try {
-        const res = await fetch("/api/auth/signup", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            username: name,
-            password,
-          }),
+        const response = await axios.post("/api/auth/signup", {
+          email: formData.email,
+          username: formData.name,
+          password: formData.password,
         });
-
-          if(!res.ok) {
-            throw new Error("Network response was not ok");
-          }
-          const data = await res.json();
-          if(data.error) {
-            throw new Error(data.error);
-          }
-          return data;
-
-      } catch (error) {
-        console.error(error);
+        setData(response.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
       }
-
-    }
-  });
-
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // console.log("user:", formData);
-    mutate(formData.email, formData.name, formData.password);
+    };
+  
+    return { signup, loading, error, data };
   };
 
-  const handleClick = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+  const { signup, loading } = useSignup(formData);
 
-  }
+const handleSubmit = (e) => {
+  e.preventDefault();
+  signup();
+};
+
+
+  // const { mutate } = useMutation({
+  //   mutationFn: async ({email, name ,password}) => {
+  //     try {
+  //       const res = await fetch("/api/auth/signup", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({
+  //           email,
+  //           username: name,
+  //           password,
+  //         }),
+  //       });
+
+  //         if(!res.ok) {
+  //           throw new Error("Network response was not ok");
+  //         }
+  //         const data = await res.json();
+  //         if(data.error) {
+  //           throw new Error(data.error);
+  //         }
+  //         return data;
+
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+
+  //   }
+  // });
+
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(formData)
+  //   mutate({
+  //     email: formData.email,
+  //     name: formData.name,
+  //     password: formData.password,
+  //   });
+  // };
+  
+
+  // const handleClick = () => {
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 3000);
+
+  // }
   return (
     <div className="w-full flex  items-center justify-center p-7 h-screen">
         <div className='border-none rounded shadow-2xl  p-6 flex flex-col'>
@@ -117,7 +154,7 @@ const Signuppage = () => {
 
             <button
             className="px-10 py-3 border-none hover:bg-teal-400 bg-teal-950  text-teal-50 rounded hover:cursor-pointer"
-            onClick={handleClick}
+            type="submit"
             >
               {loading ? (
                 <Loader />
