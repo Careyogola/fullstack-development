@@ -26,6 +26,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/products" element={<Productspage />} />
         <Route path="/signups" element={<Signuppage />} />
         <Route path="/login" element={<Loginpage />} />
+        <Route path="/homepage" element={<App />} />
       </Routes>
     </BrowserRouter>
     </QueryClientProvider>
