@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ If using v6+
+import { useNavigate } from "react-router-dom"; 
 import Loader from "../components/Loader";
 import axios from "axios";
-
+import { Link } from "react-router"
 const Signuppage = () => {
   const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ const Signuppage = () => {
   };
 
   return (
-    <div className="w-full flex items-center justify-center p-7 h-screen">
+    <div className="w-full flex items-center flex-col justify-center p-7 h-screen">
       <div className="border-none rounded shadow-2xl p-6 flex flex-col bg-gray-900">
         <h4 className="text-3xl font-bold text-center text-white mb-7">
           Register account here
@@ -105,6 +105,12 @@ const Signuppage = () => {
           </button>
         </form>
       </div>
+      <p className="text-center font-normal mt-5">
+            Already have an account .
+            <span className="text-violet-200">
+              <Link to="/login"> Login.</Link>
+            </span>
+          </p>
     </div>
   );
 };
