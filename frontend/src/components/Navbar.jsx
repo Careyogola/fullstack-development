@@ -2,50 +2,56 @@ import { Menu } from '@headlessui/react'
 import { FiLogOut } from 'react-icons/fi'
 import { VscAccount } from 'react-icons/vsc'
 import { MdDarkMode } from 'react-icons/md'
-// import { useTheme } from 'next-themes'
-import {Link} from 'react-router'
+import { useTheme } from 'next-themes'
+import { Link, useNavigate } from 'react-router'
+import axios from 'axios'
 
 const Navbar = () => {
-  // const { theme, setTheme } = useTheme();
+  const navigate = useNavigate();
+  const { theme, setTheme } = useTheme();
 
-  const handleLogout = () => {
-    // Example logout logic
-    localStorage.removeItem('token'); // or auth-related item
-    window.location.href = '/login'; // Redirect to login
+  const handleLogout = async () => {
+    try {
+       const res = await axios.post('/api/auth/logout');
+       if(res.status === 200){
+        navigate('/login');
+       }
+    } catch (error) {
+      console.error(error);
+      console.log('error', error);
+    }
   }
 
   return (
     <div className='w-full shadow-sm p-7 bg-gray-900'>
       <div className='flex flex-row justify-between'>
         <div className='flex flex-row gap-4 justify-evenly items-center text-white'>
-          <Link href='/' className='text-2xl font-bold'>Created<span className='text-teal-400'>Store</span></Link>
-          <Link href='/products' className="group text-white transition duration-300">Products
+          <Link to='/' className='text-2xl font-bold'>Created<span className='text-teal-400'>Store</span></Link>
+          <Link to='/products' className="group text-white transition duration-300">Products
             <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
           </Link>
-          <Link href='/docs' className="group text-white transition duration-300">Docs
+          <Link to='/docs' className="group text-white transition duration-300">Docs
             <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
           </Link>
-          <Link href='/deleted' className="group text-white transition duration-300">DeletedProducts
+          <Link to='/deleted' className="group text-white transition duration-300">DeletedProducts
             <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
           </Link>
-          <Link href='/updated' className="group text-white transition duration-300">UpdatedProducts
+          <Link to='/updated' className="group text-white transition duration-300">UpdatedProducts
             <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
           </Link>
         </div>
 
         <div className='flex flex-row justify-evenly items-center gap-4'>
-          <Link href='/login' className="group text-white transition duration-300">Log in
+          <Link to='/login' className="group text-white transition duration-300">Log in
             <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
           </Link>
-          <Link href='/signups' className="group text-white transition duration-300">Create Account
+          <Link to='/signup' className="group text-white transition duration-300">Create Account
             <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
           </Link>
 
-          {/* <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+          <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
             {theme === "dark" ? <MdOutlineDarkMode size={20}/> : <MdDarkMode size={20}/>}
-          </button> */}
-          <MdDarkMode size={20} color="white" />
-          <VscAccount size={20} color="white" className="hover:cursor-pointer" />
+          </button>
 
           {/* Avatar with dropdown */}
           <Menu as="div" className="relative">
