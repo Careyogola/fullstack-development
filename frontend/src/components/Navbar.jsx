@@ -1,12 +1,12 @@
 // import { useTheme } from 'next-themes'
 import { MdOutlineDarkMode, MdDarkMode  } from "react-icons/md";
 import { VscAccount } from "react-icons/vsc";
-
+import { useTheme } from 'next-themes';
 
 
 const Navbar = () => {
 
-  // const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   return (
     <div className='w-full shadow-sm p-7'>
@@ -45,7 +45,15 @@ const Navbar = () => {
         theme === "dark" ? <MdOutlineDarkMode size={20}/> : <MdDarkMode size={20}/>
         }
         </button> */}
-        <MdDarkMode size={20} color="white"/>
+
+        <button
+  className='hover:cursor-pointer'
+  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+>
+  {theme === "dark" ? <MdOutlineDarkMode size={20} color="white"/> : <MdDarkMode size={20} color="white"/>}
+</button>
+
+        {/* <MdDarkMode size={20} color="white"/> */}
         
         <VscAccount size={20} color="white" className="hover:cursor-pointer"/>
 
