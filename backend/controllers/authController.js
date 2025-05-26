@@ -10,7 +10,7 @@ export const signup = async (req, res)=>{
         if(!emailRegex.test(email)) {
             return res.status(400).json({
                 error:"Invalid email format."
-            })
+            });
         }
 
         const existingUser = await User.findOne({ username });
